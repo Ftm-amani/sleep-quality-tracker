@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/sleepAddFragment">
+
+    <fragment
+        android:id="@+id/sleepAddFragment"
+        android:name="com.example.sleepqualitychecker.fragments.SleepAddFragment"
+        tools:layout="@layout/fragment_sleep_add" >
+        <action
+            android:id="@+id/action_sleepAddFragment_to_qualityFragment"
+            app:destination="@id/qualityFragment" />
+        <argument
+            android:name="sleepQuality"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_sleepAddFragment_to_sleepDetailDialogFragment"
+            app:destination="@id/sleepDetailDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qualityFragment"
+        android:name="com.example.sleepqualitychecker.fragments.QualityFragment"
+        tools:layout="@layout/fragment_quality">
+        <action
+            android:id="@+id/action_qualityFragment_to_sleepAddFragment"
+            app:destination="@id/sleepAddFragment" />
+    </fragment>
+    <argument android:defaultValue="-1"
+        android:name="sleepQuality" />
+    <dialog
+        android:id="@+id/sleepDetailDialogFragment"
+        android:name="com.example.sleepqualitychecker.fragments.SleepDetailDialogFragment"
+        android:label="fragment_sleep_detail_dialog"
+        tools:layout="@layout/fragment_sleep_detail_dialog" >
+        <argument
+            android:name="sleepNight"
+            app:argType="com.example.sleepqualitychecker.model.SleepNight" />
+    </dialog>
+</navigation>
